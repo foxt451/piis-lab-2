@@ -1,11 +1,8 @@
-import React from 'react';
+import React from "react";
+import GameScreen from "./components/game-screen/GameScreen";
 
 function App() {
-  return (
-    <div>
-      kke
-    </div>
-  );
+  return <GameScreen />;
 }
 
 export default App;
