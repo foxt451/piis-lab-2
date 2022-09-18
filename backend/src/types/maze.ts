@@ -10,9 +10,15 @@ export type MazeInfo = {
   field: MazeField;
   height: number;
   width: number;
+  exits: CellCoords[];
 };
 
 export type InfoForMazeGeneration = {
   width: number;
   height: number;
+};
+
+export type CellCoords = {
+  x: number;
+  y: number;
 };

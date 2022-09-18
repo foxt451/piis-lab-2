@@ -1,7 +1,8 @@
 import { GameStep, requestNewGame } from "../../../store/slices/game-slice";
 import { store } from "../../../store/store";
 import { MazeCell } from "../../../types/maze";
-import { renderExits } from "./render-exits";
+import { renderAntagonist } from "./antagonist";
+import { renderExits } from "./exits";
 
 const cellColors = {
   [MazeCell.EMPTY]: "rgba(0, 0, 0, 0)",
@@ -28,4 +29,5 @@ export const renderMaze = async (canvas: CanvasRenderingContext2D) => {
   }
 
   renderExits(canvas, mazeInfo.info.exits, cellSize);
+  renderAntagonist(canvas, cellSize);
 };

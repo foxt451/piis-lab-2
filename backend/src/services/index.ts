@@ -1,5 +1,5 @@
-import { GameService } from "./game/game-service";
+import { AntagonistService } from "./game/antagonist-service";
+import { MazeService } from "./game/maze-service";
 
-const gameService = new GameService();
-
-export { gameService };
+export const mazeService = new MazeService();
+export const antagonistService = new AntagonistService();
