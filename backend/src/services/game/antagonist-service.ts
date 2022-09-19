@@ -3,12 +3,13 @@ import { CellCoords, MazeCell, MazeInfo } from "../../types/game/maze";
 import { Path } from "../../types/game/path";
 import { PathAlgo } from "../../types/game/path-algo";
 import { constructPathAStar } from "./helpers/construct-path-a-star";
+import { constructPathLee } from "./helpers/construct-path-lee";
 import { getCellAllNeighbours } from "./helpers/get-cell-neigbours";
 
 export class AntagonistService {
   public static readonly CELLS_PER_SECOND: number = 4;
 
-  findInitialAntagonistInfo(maze: MazeInfo): AntagonistInfo {
+  findInitialAntagonistInfo(maze: MazeInfo, algorithm: PathAlgo): AntagonistInfo {
     const initialPos = this.findInitialAntagonistPos(maze);
     const cellsCovered: boolean[][] = maze.field.map((row) =>
       row.map(() => false)
@@ -17,7 +18,7 @@ export class AntagonistService {
     return {
       position: initialPos,
       constructedPath: this.constructPath(
-        "a-star",
+        algorithm,
         maze,
         initialPos,
         maze.exits
@@ -73,7 +74,7 @@ export class AntagonistService {
     if (algorithm === "a-star") {
       return constructPathAStar(maze, start, exits);
     } else {
-      return constructPathAStar(maze, start, exits);
+      return constructPathLee(maze, start, exits);
     }
   }
 }

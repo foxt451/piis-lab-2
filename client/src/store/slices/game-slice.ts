@@ -43,8 +43,8 @@ export const gameSlice = createSlice({
   name: "game",
   initialState,
   reducers: {
-    reset() {
-      return initialState;
+    reset(state) {
+      return { ...initialState, algorithm: state.algorithm };
     },
     setAntagonistInfo(state, action: PayloadAction<AntagonistInfo>) {
       state.antagonist.info = action.payload;

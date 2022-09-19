@@ -24,8 +24,11 @@ export const initGameHandlers = (socket: ExtendedGameSocket) => {
 
     const request: StartGameRequestDto = socket.data.body;
     const maze = mazeService.generateMaze(request.mazeGenerationInfo);
-    const initialAntagonistInfo =
-      antagonistService.findInitialAntagonistInfo(maze);
+
+    const initialAntagonistInfo = antagonistService.findInitialAntagonistInfo(
+      maze,
+      request.algorithm
+    );
     const response: StartGameResponseDto = {
       maze,
       antagonist: initialAntagonistInfo,
@@ -107,7 +110,7 @@ const finishGame = (socket: ExtendedGameSocket, gameState: GameState) => {
 
 const reconstructPath = (gameState: GameState) => {
   const newBestPath = antagonistService.constructPath(
-    "a-star",
+    gameState.algortihm,
     gameState.maze,
     gameState.antagonist.position,
     gameState.maze.exits
