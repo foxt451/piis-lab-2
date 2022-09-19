@@ -1,4 +1,4 @@
-import { CellCoords, MazeField } from "../../../types/maze";
+import { CellCoords, MazeField } from "../../../types/game/maze";
 
 export const getGridMazeCellEmptyNeighbours = (
   height: number,
@@ -51,6 +51,27 @@ export const getCellAllNeighbours = (
   }
   if (cell.y < height - 1 && cell.x < width - 1) {
     result.push({ x: cell.x + 1, y: cell.y + 1 });
+  }
+  return result;
+};
+
+export const getCellAllManhattanNeighbours = (
+  height: number,
+  width: number,
+  cell: CellCoords
+): CellCoords[] => {
+  const result: CellCoords[] = [];
+  if (cell.x > 0) {
+    result.push({ x: cell.x - 1, y: cell.y });
+  }
+  if (cell.y > 0) {
+    result.push({ x: cell.x, y: cell.y - 1 });
+  }
+  if (cell.x < width - 1) {
+    result.push({ x: cell.x + 1, y: cell.y });
+  }
+  if (cell.y < height - 1) {
+    result.push({ x: cell.x, y: cell.y + 1 });
   }
   return result;
 };

@@ -1,4 +1,4 @@
-import { MazeCell, MazeField } from "../../../types/maze";
+import { MazeCell, MazeField } from "../../../types/game/maze";
 
 export const makeRandomizedHoles = (field: MazeField, randomFactor = 0.1) => {
   for (let i = 0; i < field.length; i++) {

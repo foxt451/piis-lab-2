@@ -1,23 +1,34 @@
 import { CellCoords } from "../../../types/maze";
 
-const exitColor = "rgba(0, 150, 0, 0.8)";
+const exitSprite = new Image();
+exitSprite.src = "/assets/sprites/dollar.png";
+let isExitSpriteLoaded = false;
+
+exitSprite.addEventListener(
+  "load",
+  () => {
+    isExitSpriteLoaded = true;
+  },
+  false
+);
 
 export const renderExits = async (
   canvas: CanvasRenderingContext2D,
   exits: CellCoords[],
   cellSize: number
 ) => {
-  canvas.fillStyle = exitColor;
+  const exitScale = 2;
+
+  if (!isExitSpriteLoaded) {
+    return;
+  }
   exits.forEach((exit) => {
-    canvas.beginPath();
-    canvas.arc(
-      exit.x * cellSize + cellSize / 2,
-      exit.y * cellSize + cellSize / 2,
-      cellSize,
-      0,
-      Math.PI * 2,
-      true
+    canvas.drawImage(
+      exitSprite,
+      (exit.x - (exitScale - 1) / 2) * cellSize,
+      (exit.y - (exitScale - 1) / 2) * cellSize,
+      cellSize * exitScale,
+      cellSize * exitScale
     );
-    canvas.fill();
   });
 };

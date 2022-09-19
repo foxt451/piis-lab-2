@@ -5,6 +5,10 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { store } from "./store/store";
+import { initHandlers } from "./socket-io/handlers";
+import { socket } from "./socket-io";
+
+initHandlers(socket, store);
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

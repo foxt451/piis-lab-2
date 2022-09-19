@@ -4,12 +4,24 @@ import {
   InfoForMazeGeneration,
   MazeCell,
   MazeInfo,
-} from "../../types/maze";
+} from "../../types/game/maze";
 import { generateGridMaze } from "./helpers/generate-grid-maze";
 import { getGridMazeCellEmptyNeighbours } from "./helpers/get-cell-neigbours";
+import { isValidCell } from "./helpers/is-valid-cell";
 import { makeRandomizedHoles } from "./helpers/make-randomized-holes";
 
 export class MazeService {
+  setWall(wallCoords: CellCoords, mazeInfo: MazeInfo): MazeInfo {
+    const mazeCopy = {
+      ...mazeInfo,
+      field: mazeInfo.field.map((row) => [...row]),
+    };
+    if (isValidCell(wallCoords, mazeCopy)) {
+      mazeCopy.field[wallCoords.y][wallCoords.x] = MazeCell.WALL;
+    }
+    return mazeCopy;
+  }
+
   generateMaze(infoForMazeGeneration: InfoForMazeGeneration): MazeInfo {
     const { height, width } = infoForMazeGeneration;
     const gridMaze = generateGridMaze(height, width);

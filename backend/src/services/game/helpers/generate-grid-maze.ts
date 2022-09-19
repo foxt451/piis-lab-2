@@ -1,4 +1,4 @@
-import { MazeCell, MazeField } from "../../../types/maze";
+import { MazeCell, MazeField } from "../../../types/game/maze";
 
 export const generateGridMaze = (height: number, width: number): MazeField => {
   return [...Array(height).keys()].map((indexY) => {

@@ -22,3 +22,6 @@ export type CellCoords = {
   x: number;
   y: number;
 };
+
+export type SetWallRequestDto = CellCoords;
+

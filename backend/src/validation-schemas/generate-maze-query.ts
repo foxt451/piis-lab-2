@@ -1,6 +1,6 @@
 import * as yup from "yup";
 import { SchemaOf } from "yup";
-import { GenerateMazeQuery } from "../types/generate-maze-query";
+import { GenerateMazeQuery } from "../types/game/generate-maze-query";
 
 export const generateMazeQuerySchema: SchemaOf<GenerateMazeQuery> = yup
   .object()
