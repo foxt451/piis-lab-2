@@ -10,9 +10,11 @@ The gopher will always try to reach the closest of all 4 treasures to him, and d
 
 ## Game process
 Game Process:
+
 ![game process](https://user-images.githubusercontent.com/52706110/191001738-1062a6f6-dbb4-4ce7-ad2c-11dec3cf64eb.gif)
 
 Menu:
+
 ![menu](https://user-images.githubusercontent.com/52706110/191001781-af4b2955-ccff-4d81-a760-a000ba1f6e93.png)
 
 ## Stack
