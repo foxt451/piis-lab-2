@@ -20,6 +20,9 @@ Menu:
 ## Stack
 
 Client: react/redux
+
 Back: express
-Common: socket.io/typescript
+
+Common: socket.io, typescript
+
 Algorithms: DFS for maze generation, Lee algorithm and A\* for path finding
